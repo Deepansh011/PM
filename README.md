@@ -1,16 +1,14 @@
-# InboxIQ — Email Triage and Reply Assistant (C16)
+# InboxIQ — Email Triage and Reply Assistant
 
-Prompt Engineering mini-project starter package for Milestone 2.
+OpenRouter-powered email triage and reply drafting prototype.
 
 ## What it does
 - Takes a subject, sender role, email body, academic-calendar context, and optional policy excerpt.
 - Produces a category, priority, reason, summary, draft reply, policy-grounding note, and review flags.
-- Supports a deterministic demo mode without an API key and an optional Gemini API mode.
+- Uses OpenRouter's chat completions API to analyze messages.
 - Requires human review; it does not connect to or send email from a mailbox.
 
 ## Important
-Demo mode uses simple keyword heuristics. It is only for testing the UI and should **not** be described as an LLM result or as evidence of model accuracy. Gemini mode is the actual model integration. Record actual outputs and evaluate them against labelled expected results before reporting scores.
-
 Use synthetic or anonymized emails only. Do not enter real personal or confidential data.
 
 ## Run locally
@@ -28,26 +26,25 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Choose **Demo mode** to run without an API key.
+## Configure OpenRouter
 
-## Optional Gemini API mode
-1. Obtain permitted access to the Gemini API.
-2. Set `GEMINI_API_KEY` in your shell environment; do not commit it to Git.
-3. Run `streamlit run app.py`, select Gemini API, and choose an available model.
+The app reads `OPENROUTER_API_KEY` from `.streamlit/local_secrets.json`. This local JSON file is ignored by Git and is not exposed in the frontend. The app defaults to OpenRouter's `openrouter/free` model router; model selection is not exposed in the UI.
+
+You can also set `OPENROUTER_API_KEY` in your shell environment. Never commit API keys to Git. OpenRouter receives the email content you enter for analysis; use synthetic or anonymized emails. The Settings tab contains only appearance and mail preferences.
 
 macOS/Linux:
 ```bash
-export GEMINI_API_KEY="YOUR_KEY"
+export OPENROUTER_API_KEY="YOUR_KEY"
 streamlit run app.py
 ```
 
 Windows PowerShell:
 ```powershell
-$env:GEMINI_API_KEY="YOUR_KEY"
+$env:OPENROUTER_API_KEY="YOUR_KEY"
 streamlit run app.py
 ```
 
-API access, quotas, and model names can change. Verify the model is available in your account.
+The `openrouter/free` router is rate limited and selects among available free models, so output quality and response availability can vary.
 
 ## Files
 - `prompts/baseline.txt`: initial JSON prompt.
