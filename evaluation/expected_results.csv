@@ -1,0 +1,51 @@
+test_id,expected_category,expected_priority
+E001,Academic,High
+E002,Academic,Medium
+E003,Meeting,Medium
+E004,General / Administrative,Low
+E005,Complaint / Issue,High
+E006,Admissions,Medium
+E007,General / Administrative,Low
+E008,Uncertain,Uncertain
+E009,Registration / Fees,High
+E010,Finance / Administration,Medium
+E011,Academic,High
+E012,Meeting,Low
+E013,Complaint / Issue,Medium
+E014,Admissions,High
+E015,Academic,Low
+E016,Registration / Fees,Medium
+E017,General / Administrative,Medium
+E018,Complaint / Issue,High
+E019,Meeting,Medium
+E020,Academic,Medium
+E021,General / Administrative,Low
+E022,Finance / Administration,High
+E023,Admissions,Low
+E024,Registration / Fees,High
+E025,Complaint / Issue,Medium
+E026,Academic,High
+E027,Meeting,High
+E028,General / Administrative,Low
+E029,Finance / Administration,Medium
+E030,Admissions,Medium
+E031,Academic,Medium
+E032,Complaint / Issue,High
+E033,General / Administrative,Medium
+E034,Registration / Fees,Low
+E035,Academic,High
+E036,Meeting,Medium
+E037,Complaint / Issue,Medium
+E038,General / Administrative,Low
+E039,Admissions,High
+E040,Finance / Administration,Low
+E041,Academic,Uncertain
+E042,General / Administrative,Uncertain
+E043,Registration / Fees,Medium
+E044,Complaint / Issue,High
+E045,Meeting,Low
+E046,Academic,Medium
+E047,Finance / Administration,High
+E048,Admissions,Uncertain
+E049,Complaint / Issue,Medium
+E050,Academic,High
