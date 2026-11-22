@@ -15,7 +15,7 @@ OPENROUTER_MODEL = "openrouter/free"
 
 
 def load_openrouter_key():
-    """Read the OpenRouter credential from local JSON or the environment."""
+    """Read the key from local JSON, environment, or Streamlit Cloud secrets."""
     try:
         local_config = json.loads(LOCAL_CONFIG_PATH.read_text(encoding="utf-8"))
     except FileNotFoundError:
@@ -23,10 +23,15 @@ def load_openrouter_key():
     except (OSError, json.JSONDecodeError) as error:
         raise RuntimeError("The local OpenRouter JSON config could not be read.") from error
 
-    return (
-        str(local_config.get("OPENROUTER_API_KEY", "")).strip()
-        or os.getenv("OPENROUTER_API_KEY", "").strip()
-    )
+    local_key = str(local_config.get("OPENROUTER_API_KEY", "")).strip()
+    environment_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if local_key or environment_key:
+        return local_key or environment_key
+
+    try:
+        return str(st.secrets.get("OPENROUTER_API_KEY", "")).strip()
+    except st.errors.StreamlitSecretNotFoundError:
+        return ""
 
 st.set_page_config(
     page_title="InboxIQ",

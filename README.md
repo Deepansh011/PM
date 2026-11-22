@@ -28,7 +28,7 @@ streamlit run app.py
 
 ## Configure OpenRouter
 
-The app reads `OPENROUTER_API_KEY` from `.streamlit/local_secrets.json`. This local JSON file is ignored by Git and is not exposed in the frontend. The app defaults to OpenRouter's `openrouter/free` model router; model selection is not exposed in the UI.
+The app reads `OPENROUTER_API_KEY` from `.streamlit/local_secrets.json`, the environment, or Streamlit secrets. Local secret files are ignored by Git and are not exposed in the frontend. For Streamlit Community Cloud, add `OPENROUTER_API_KEY = "your-key"` in the app's Secrets settings. The app defaults to OpenRouter's `openrouter/free` model router; model selection is not exposed in the UI.
 
 You can also set `OPENROUTER_API_KEY` in your shell environment. Never commit API keys to Git. OpenRouter receives the email content you enter for analysis; use synthetic or anonymized emails. The Settings tab contains only appearance and mail preferences.
 
